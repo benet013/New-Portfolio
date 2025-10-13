@@ -1,140 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analytics Portfolio</title>
+    <title></title>
+    <meta name="description" content="Portfolio of Benet Limbu - Web Developer specializing in Django and React">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5B9BFF',
+                        darkbg: '#0B0F14',
+                        lightbg: '#FFFFFF',
+                        darktext: '#E6EAF2',
+                        lighttext: '#0B0F14',
+                        muted: '#8A94A6'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            color: #e2e8f0;
-            scroll-behavior: smooth;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            transition: background-color 0.3s ease;
         }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-        }
-        
+
         .card-hover {
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
+
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
-        
-        .skill-icon {
-            transition: all 0.3s ease;
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(45deg, #5B9BFF, #3B82F6);
         }
-        
-        .skill-icon:hover {
-            transform: scale(1.1);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
+
+        #vanta-bg {
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
+            top: 0;
             left: 0;
-            background-color: #38bdf8;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
             width: 100%;
-        }
-        
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            height: 100%;
+            z-index: -1;
         }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-slate-900/80 backdrop-blur-md z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <span class="text-xl font-bold text-slate-100">AnalyticsPortfolio</span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="nav-link text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="#projects" class="nav-link text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        <a href="#skills" class="nav-link text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Skills</a>
-                        <a href="#about" class="nav-link text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#contact" class="nav-link text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-slate-300 hover:text-white focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
+
+<body class="bg-lightbg text-lighttext dark:bg-darkbg dark:text-darktext transition-colors duration-300">
+    <!-- Header -->
+    <header class="fixed w-full bg-white/80 dark:bg-darkbg/80 backdrop-blur-md z-50 shadow-sm">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="text-1xl font-bold text-primary">Portfolio</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="hover:text-primary transition">Home</a>
+                <a href="#projects" class="hover:text-primary transition">Projects</a>
+                <a href="#skills" class="hover:text-primary transition">Skills</a>
+                <a href="#education" class="hover:text-primary transition">Education</a>
+                <a href="#certifications" class="hover:text-primary transition">Certifications</a>
+                <a href="#contact" class="hover:text-primary transition">Contact</a>
+                <a href="/assets/Benet_Limbu_CV.pdf" download
+                    class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition">Download CV</a>
+                <!-- <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <i data-feather="moon" class="hidden dark:block"></i>
+                    <i data-feather="sun" class="dark:hidden"></i>
+                </button> -->
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2">
+                <i data-feather="menu"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-darkbg shadow-lg">
+            <div class="px-4 py-2 space-y-3">
+                <a href="#home" class="block hover:text-primary transition">Home</a>
+                <a href="#projects" class="block hover:text-primary transition">Projects</a>
+                <a href="#skills" class="block hover:text-primary transition">Skills</a>
+                <a href="#education" class="block hover:text-primary transition">Education</a>
+                <a href="#certifications" class="block hover:text-primary transition">Certifications</a>
+                <a href="#contact" class="block hover:text-primary transition">Contact</a>
+                <a href="/assets/Benet_Limbu_CV.pdf" download
+                    class="block bg-primary text-white px-4 py-2 rounded-lg hover:bg-opacity-90 transition text-center">Download
+                    CV</a>
+                <div class="flex justify-center pt-2">
+                    <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i data-feather="moon" class="hidden dark:block"></i>
+                        <i data-feather="sun" class="dark:hidden"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-800">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Home</a>
-                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Projects</a>
-                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Skills</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">About</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-700">Contact</a>
-            </div>
-        </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-gradient min-h-screen flex items-center pt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                        Hi, I'm <span class="text-cyan-400">Binit</span>
-                    </h1>
-                    <h2 class="text-2xl md:text-3xl text-slate-300 mb-6">
-                        Data Analytics
-                    </h2>
-                    <p class="text-lg text-slate-300 mb-8 max-w-lg">
-                        Transforming raw data into meaningful insights. Passionate about uncovering patterns, telling stories with data, and driving data-informed decisions.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#projects" class="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-medium transition duration-300">
-                            View Projects
-                        </a>
-                        <a href="#contact" class="px-6 py-3 border border-cyan-600 text-cyan-400 hover:bg-slate-800 rounded-lg font-medium transition duration-300">
-                            Contact Me
-                        </a>
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+        <div id="vanta-bg"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 relative z-10">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    <span class="gradient-text">BINIT LIMBU</span>
+                    <br> Full Stack Developer
+                </h1>
+                <p class="text-xl text-muted mb-8">
+                    I build real-time, user-friendly web apps with Django, DRF, and React. Currently pursuing a PGDCA
+                    (2025–2026) after completing a BBS (2020–2024).
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#projects"
+                        class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition font-medium">
+                        View Projects
+                    </a>
+                    <a href="/assets/Benet_Limbu_CV.pdf" download
+                        class="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-white transition font-medium">
+                        Download CV
+                    </a>
+                </div>
+            </div>
+            <div class="mt-12 flex flex-wrap gap-2">
+                <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm">Django</span>
+                <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm">DRF</span>
+                <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm">React (Vite)</span>
+                <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm">JWT</span>
+                <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full text-sm">Channels</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Featured Projects</h2>
+                <p class="text-muted max-w-2xl mx-auto">Here are some of my recent projects built with modern
+                    technologies</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md card-hover">
+                    <!-- Replaced <img> with gradient + Feather icon -->
+                    <div
+                        class="w-full h-48 bg-gradient-to-r from-cyan-600 to-blue-600 flex items-center justify-center">
+                        <i data-feather="message-square" class="w-16 h-16 text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Real-time Chat App</h3>
+                            
+                        </div>
+                        <p class="text-muted mb-4">A full-stack real-time chat application with modern features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">Django</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">DRF</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">React</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">JWT</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">Channels</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <a href="#" class="text-primary hover:underline text-sm">Live Demo</a>
+                            <a href="#" class="text-primary hover:underline text-sm">Source Code</a>
+                            <a href="#" class="text-primary hover:underline text-sm">Case Study</a>
+                        </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-                        <div class="absolute inset-0 bg-cyan-500 rounded-full opacity-20 blur-xl animate-pulse"></div>
-                        <div class="relative w-full h-full flex items-center justify-center">
-                            <img src="IMG_6195.jpg" 
-                                 alt="Profile" 
-                                 class="rounded-full w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-slate-700 shadow-xl animate-float">
+
+                <!-- Project 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md card-hover">
+                    <!-- Replaced <img> with gradient + Feather icon -->
+                    <div
+                        class="w-full h-48 bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
+                        <i data-feather="file-text" class="w-16 h-16 text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Notes Application</h3>
+                        </div>
+                        <p class="text-muted mb-4">A clean note-taking application with CRUD functionality.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">Django</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">DRF</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">JWT</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">React</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <a href="#" class="text-primary hover:underline text-sm">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md card-hover">
+                    <!-- Replaced <img> with gradient + Feather icon -->
+                    <div
+                        class="w-full h-48 bg-gradient-to-r from-emerald-600 to-teal-600 flex items-center justify-center">
+                        <i data-feather="shopping-bag" class="w-16 h-16 text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">E-commerce API</h3>
+
+                        </div>
+                        <p class="text-muted mb-4">A robust e-commerce API with product listing, cart and checkout
+                            endpoints.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">Django</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">DRF</span>
+                            <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">JWT</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <a href="#" class="text-primary hover:underline text-sm">API Docs</a>
+                            <a href="#" class="text-primary hover:underline text-sm">Source Code</a>
                         </div>
                     </div>
                 </div>
@@ -142,379 +231,303 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">My Projects</h2>
-                <div class="w-20 h-1 bg-cyan-500 mx-auto"></div>
-                <p class="mt-4 text-lg text-slate-300 max-w-3xl mx-auto">
-                    Explore my data analytics projects where I've applied various techniques to solve real-world problems.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="card-hover bg-slate-700 rounded-xl overflow-hidden shadow-lg">
-                    <div class="h-48 bg-gradient-to-r from-cyan-600 to-blue-600 flex items-center justify-center">
-                        <i class="fas fa-chart-line text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Student Performance Analysis</h3>
-                        <p class="text-slate-300 mb-4">
-                            Python-based analysis to find out different patterns and things affecting student Performance.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">Python</span>
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">Pandas</span>
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">Matplotlib</span>
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">Seaborn</span>
-                        </div>
-                        <a href="https://github.com/benet013/StudentPerformanceEDA" class="text-cyan-400 hover:text-cyan-300 font-medium flex items-center">
-                            View Project <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="card-hover bg-slate-700 rounded-xl overflow-hidden shadow-lg">
-                    <div class="h-48 bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
-                        <i class="fas fa-database text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">British Airways Review</h3>
-                        <p class="text-slate-300 mb-4">
-                            A Tableau based project.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">Python</span>
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">Pandas</span>
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">Scikit-learn</span>
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">K-means</span>
-                        </div>
-                        <a href="https://public.tableau.com/app/profile/binit.limbu/viz/TableauProject_17506854306770/Dashboard1?publish=yes" class="text-cyan-400 hover:text-cyan-300 font-medium flex items-center">
-                            View Project <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="card-hover bg-slate-700 rounded-xl overflow-hidden shadow-lg">
-                    <div class="h-48 bg-gradient-to-r from-emerald-600 to-teal-600 flex items-center justify-center">
-                        <i class="fas fa-search-dollar text-white text-6xl"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Market Basket Analysis</h3>
-                        <p class="text-slate-300 mb-4">
-                            SQL-based analysis of retail transaction data to identify product associations and improve recommendations.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">SQL</span>
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">PostgreSQL</span>
-                            <span class="px-3 py-1 bg-slate-600 rounded-full text-xs text-slate-300">Apriori Algorithm</span>
-                        </div>
-                        <a href="#" class="text-cyan-400 hover:text-cyan-300 font-medium flex items-center">
-                            View Project <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="#" class="inline-flex items-center px-6 py-3 border border-cyan-600 text-cyan-400 hover:bg-slate-700 rounded-lg font-medium transition duration-300">
-                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Technical Skills</h2>
-                <div class="w-20 h-1 bg-cyan-500 mx-auto"></div>
-                <p class="mt-4 text-lg text-slate-300 max-w-3xl mx-auto">
-                    Tools and technologies I use to extract insights from data and communicate findings effectively.
-                </p>
+                <h2 class="text-3xl font-bold mb-4">Skills & Expertise</h2>
+                <p class="text-muted max-w-2xl mx-auto">Technologies I work with and areas I specialize in</p>
             </div>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                <!-- Excel -->
-                <div class="skill-icon flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition duration-300">
-                    <div class="w-16 h-16 mb-4 flex items-center justify-center bg-green-600 rounded-full">
-                        <i class="fas fa-file-excel text-white text-2xl"></i>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-lg mr-4">
+                            <i data-feather="code" class="text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Frontend</h3>
                     </div>
-                    <h3 class="text-lg font-medium text-white">Excel</h3>
-                    <p class="text-sm text-slate-300 mt-1">Advanced</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>React (Vite)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>JavaScript/TypeScript</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Tailwind CSS</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Responsive Design</span>
+                        </li>
+                    </ul>
                 </div>
-                
-                <!-- SQL -->
-                <div class="skill-icon flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition duration-300">
-                    <div class="w-16 h-16 mb-4 flex items-center justify-center bg-blue-600 rounded-full">
-                        <i class="fas fa-database text-white text-2xl"></i>
+
+                <!-- Backend -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-lg mr-4">
+                            <i data-feather="server" class="text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Backend</h3>
                     </div>
-                    <h3 class="text-lg font-medium text-white">SQL</h3>
-                    <p class="text-sm text-slate-300 mt-1">Advanced</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Django</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Django REST Framework</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Django Channels</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Python</span>
+                        </li>
+                    </ul>
                 </div>
-                
-                <!-- Python -->
-                <div class="skill-icon flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition duration-300">
-                    <div class="w-16 h-16 mb-4 flex items-center justify-center bg-yellow-500 rounded-full">
-                        <i class="fab fa-python text-white text-2xl"></i>
+
+                <!-- APIs & Auth -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-lg mr-4">
+                            <i data-feather="shield" class="text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">APIs & Authentication</h3>
                     </div>
-                    <h3 class="text-lg font-medium text-white">Python</h3>
-                    <p class="text-sm text-slate-300 mt-1">Intermediate</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>RESTful APIs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>JWT Authentication</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>WebSocket APIs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>API Documentation</span>
+                        </li>
+                    </ul>
                 </div>
-                
-                <!-- Power BI -->
-                <div class="skill-icon flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition duration-300">
-                    <div class="w-16 h-16 mb-4 flex items-center justify-center bg-amber-600 rounded-full">
-                        <i class="fas fa-chart-pie text-white text-2xl"></i>
+
+                <!-- Tools -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-lg mr-4">
+                            <i data-feather="tool" class="text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Tools</h3>
                     </div>
-                    <h3 class="text-lg font-medium text-white">Power BI</h3>
-                    <p class="text-sm text-slate-300 mt-1">Advanced</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Git & GitHub</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Postman</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Docker</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>CI/CD Basics</span>
+                        </li>
+                    </ul>
                 </div>
-                
-                <!-- Tableau -->
-                <div class="skill-icon flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition duration-300">
-                    <div class="w-16 h-16 mb-4 flex items-center justify-center bg-blue-400 rounded-full">
-                        <i class="fas fa-chart-bar text-white text-2xl"></i>
+
+                <!-- Soft Skills -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-lg mr-4">
+                            <i data-feather="users" class="text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Soft Skills</h3>
                     </div>
-                    <h3 class="text-lg font-medium text-white">Tableau</h3>
-                    <p class="text-sm text-slate-300 mt-1">Intermediate</p>
-                </div>
-                
-                <!-- R -->
-                <div class="skill-icon flex flex-col items-center p-6 bg-slate-800 rounded-xl hover:bg-slate-700 transition duration-300">
-                    <div class="w-16 h-16 mb-4 flex items-center justify-center bg-blue-700 rounded-full">
-                        <i class="fab fa-r-project text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-medium text-white">R</h3>
-                    <p class="text-sm text-slate-300 mt-1">Basic</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Problem Solving</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Documentation</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Teamwork</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-primary mr-2"></i>
+                            <span>Communication</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="mt-16 bg-slate-800 rounded-xl p-8">
-                <h3 class="text-xl font-bold text-white mb-6">Additional Competencies</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-lg font-medium text-cyan-400 mb-3">Data Analysis</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-emerald-400 mr-2"></i>
-                                <span class="text-slate-300">Data cleaning & transformation</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-emerald-400 mr-2"></i>
-                                <span class="text-slate-300">Statistical analysis</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-emerald-400 mr-2"></i>
-                                <span class="text-slate-300">Predictive modeling</span>
-                            </li>
-                        </ul>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Education</h2>
+                <p class="text-muted max-w-2xl mx-auto">My academic background and qualifications</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-4 top-0 h-full w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+
+                    <!-- Education 1 -->
+                    <div class="relative mb-10 pl-12">
+                        <div
+                            class="absolute left-0 top-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white">
+                            <i data-feather="book"></i>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                            <h3 class="text-xl font-bold mb-1">Post Graduate Diploma in Computer Applications (PGDCA)
+                            </h3>
+                            <h2 class="font-bold mb-1">Purbanchal University</h2>
+                            <p class="text-muted mb-2">2025–2026</p>
+                            <p>Advanced studies in computer applications, software development, and modern programming
+                                paradigms.</p>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="text-lg font-medium text-cyan-400 mb-3">Data Visualization</h4>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-emerald-400 mr-2"></i>
-                                <span class="text-slate-300">Dashboard development</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-emerald-400 mr-2"></i>
-                                <span class="text-slate-300">Storytelling with data</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-emerald-400 mr-2"></i>
-                                <span class="text-slate-300">Interactive visualizations</span>
-                            </li>
-                        </ul>
+
+                    <!-- Education 2 -->
+                    <div class="relative mb-10 pl-12">
+                        <div
+                            class="absolute left-0 top-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white">
+                            <i data-feather="book-open"></i>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md">
+                            <h3 class="text-xl font-bold mb-1">Bachelor's in Business Studies (BBS)</h3>
+                            <h2 class="font-bold mb-1">Tribhuwan University</h2>
+                            <p class="text-muted mb-2">2020–2024</p>
+                            <p>Comprehensive business education covering management, finance, and economics.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">About Me</h2>
-                <div class="w-20 h-1 bg-cyan-500 mx-auto"></div>
+                <h2 class="text-3xl font-bold mb-4">Certifications</h2>
+                <p class="text-muted max-w-2xl mx-auto">Professional credentials and completed courses</p>
             </div>
+
+            <div class="max-w-3xl mx-auto text-center">
             
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <h3 class="text-2xl font-bold text-white mb-6">My Journey</h3>
-                    <p class="text-slate-300 mb-6">
-                        I'm a passionate data analytics student with a strong foundation in business intelligence and data visualization. 
-                        My journey began when I discovered the power of data to tell compelling stories and drive strategic decisions.
-                    </p>
-                    <p class="text-slate-300 mb-6">
-                        What excites me most about data analytics is the opportunity to uncover hidden patterns and insights that can 
-                        transform businesses and improve people's lives. I approach every dataset with curiosity and rigor, ensuring 
-                        my analyses are both statistically sound and practically relevant.
-                    </p>
-                    <p class="text-slate-300">
-                        When I'm not analyzing data, you can find me exploring new visualization techniques, learning about emerging 
-                        technologies in the data space, or contributing to open-source data projects.
-                    </p>
-                    
-                    <div class="mt-8">
-                        <a href="#" class="inline-flex items-center px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-medium transition duration-300">
-                            <i class="fas fa-download mr-2"></i> Download Resume
-                        </a>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-md mb-4 text-left">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold">Advanced Django Developer</h3>
+                        <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded-full">2025</span>
                     </div>
+                    <p class="text-muted mb-2">XYZ Academy</p>
+                    <p class="mb-4">Advanced concepts in Django, REST APIs, and deployment strategies.</p>
+                    <a href="#" class="text-primary hover:underline text-sm">View Credential</a>
                 </div>
-                
-                <div class="lg:w-1/2">
-                    <h3 class="text-2xl font-bold text-white mb-6">Education & Certifications</h3>
-                    
-                    <div class="space-y-6">
-                        <!-- Education 1 -->
-                        <div class="bg-slate-700 rounded-lg p-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 bg-cyan-600 rounded-md p-3">
-                                    <i class="fas fa-graduation-cap text-white text-xl"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-medium text-white">Bachelors in Business Studies</h4>
-                                    <p class="text-slate-300">Tribhuwan University • 2021-2025</p>
-                                    <p class="text-slate-300 mt-2">
-                                        Specialized in Business, Finance and Statstics. 
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Certification 1 -->
-                        <!-- <div class="bg-slate-700 rounded-lg p-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 bg-amber-500 rounded-md p-3">
-                                    <i class="fas fa-certificate text-white text-xl"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-medium text-white">Microsoft Certified: Data Analyst Associate</h4>
-                                    <p class="text-slate-300">Microsoft • 2023</p>
-                                    <p class="text-slate-300 mt-2">
-                                        Demonstrated expertise in preparing, modeling, visualizing, and analyzing data with Power BI.
-                                    </p>
-                                </div>
-                            </div>
-                        </div> -->
-                        
-                        <!-- Certification 2 -->
-                        <div class="bg-slate-700 rounded-lg p-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
-                                    <i class="fas fa-certificate text-white text-xl"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-medium text-white">Google Data Analytics Professional Certificate</h4>
-                                    <p class="text-slate-300">Google • 2022</p>
-                                    <p class="text-slate-300 mt-2">
-                                        Gained hands-on experience with data cleaning, analysis, and visualization using spreadsheets, SQL, 
-                                        R programming, and Tableau.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-slate-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">Get In Touch</h2>
-                <div class="w-20 h-1 bg-cyan-500 mx-auto"></div>
-                <p class="mt-4 text-lg text-slate-300 max-w-3xl mx-auto">
-                    Have a project in mind or want to discuss data analytics opportunities? Feel free to reach out!
-                </p>
+                <h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-muted max-w-2xl mx-auto">Have a project in mind or want to collaborate? Send me a
+                    message!</p>
             </div>
-            
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <form class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-slate-300 mb-1">Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-slate-500 transition duration-300" placeholder="Your name">
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Name</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Email</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium text-slate-300 mb-1">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-slate-500 transition duration-300" placeholder="your.email@example.com">
+                            <label for="message" class="block mb-2 font-medium">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
                         </div>
-                        <div>
-                            <label for="subject" class="block text-sm font-medium text-slate-300 mb-1">Subject</label>
-                            <input type="text" id="subject" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-slate-500 transition duration-300" placeholder="What's this about?">
+                        <div class="hidden">
+                            <label for="honeypot">Leave this field empty</label>
+                            <input type="text" id="honeypot" name="honeypot">
                         </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-slate-300 mb-1">Message</label>
-                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 text-white placeholder-slate-500 transition duration-300" placeholder="Your message here..."></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="w-full px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white rounded-lg font-medium transition duration-300">
-                                Send Message
-                            </button>
-                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white px-6 py-3 rounded-lg hover:bg-opacity-90 transition font-medium">
+                            Send Message
+                        </button>
                     </form>
                 </div>
-                
-                <div class="lg:w-1/2">
-                    <div class="bg-slate-800 rounded-xl p-8 h-full">
-                        <h3 class="text-xl font-bold text-white mb-6">Contact Information</h3>
-                        
-                        <div class="space-y-6">
+                <div class="flex flex-col justify-center">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-md">
+                        <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                        <div class="space-y-4">
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 bg-cyan-600 rounded-md p-3">
-                                    <i class="fas fa-envelope text-white"></i>
+                                <div class="bg-primary bg-opacity-10 p-2 rounded-lg mr-4">
+                                    <i data-feather="mail" class="text-primary"></i>
                                 </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-medium text-white">Email</h4>
-                                    <a href="mailto:contact@analyticsportfolio.com" class="text-cyan-400 hover:text-cyan-300">benetlimbu@gmail.com</a>
+                                <div>
+                                    <p class="text-muted mb-1">Email</p>
+                                    <a href="mailto:benetlimbu@gmail.com" class="text-primary hover:underline"
+                                        id="email-address">benetlimbu@gmail.com</a>
+                                    <button onclick="copyEmail()" class="ml-2 text-xs text-primary">(Copy)</button>
                                 </div>
                             </div>
-                            
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 bg-cyan-600 rounded-md p-3">
-                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                <div class="bg-primary bg-opacity-10 p-2 rounded-lg mr-4">
+                                    <i data-feather="github" class="text-primary"></i>
                                 </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-medium text-white">Location</h4>
-                                    <p class="text-slate-300">Jhapa, Nepal</p>
+                                <div>
+                                    <p class="text-muted mb-1">GitHub</p>
+                                    <a href="#" class="text-primary hover:underline">github.com/benetlimbu</a>
                                 </div>
                             </div>
-                            
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 bg-cyan-600 rounded-md p-3">
-                                    <i class="fas fa-phone-alt text-white"></i>
+                                <div class="bg-primary bg-opacity-10 p-2 rounded-lg mr-4">
+                                    <i data-feather="linkedin" class="text-primary"></i>
                                 </div>
-                                <div class="ml-4">
-                                    <h4 class="text-lg font-medium text-white">Phone</h4>
-                                    <p class="text-slate-300">+977 9814090745</p>
+                                <div>
+                                    <p class="text-muted mb-1">LinkedIn</p>
+                                    <a href="#" class="text-primary hover:underline">linkedin.com/in/benetlimbu</a>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <h3 class="text-xl font-bold text-white mt-12 mb-6">Connect With Me</h3>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition duration-300">
-                                <i class="fab fa-linkedin-in text-white text-xl"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition duration-300">
-                                <i class="fab fa-github text-white text-xl"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition duration-300">
-                                <i class="fab fa-twitter text-white text-xl"></i>
-                            </a>
-                            <a href="#" class="w-12 h-12 bg-slate-700 hover:bg-slate-600 rounded-full flex items-center justify-center transition duration-300">
-                                <i class="fab fa-kaggle text-white text-xl"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -523,57 +536,129 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer class="bg-white dark:bg-gray-800 py-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <!-- <div class="mb-6 md:mb-0">
-                    <span class="text-xl font-bold text-white">AnalyticsPortfolio</span>
-                    <p class="text-slate-400 mt-2">Transforming data into decisions.</p>
-                </div> -->
+                <div class="mb-4 md:mb-0">
+                    <p class="text-muted">&copy; <span id="current-year"></span> Benet Limbu. All rights reserved.</p>
+                </div>
                 <!-- <div class="flex space-x-6">
-                    <a href="#home" class="text-slate-400 hover:text-white transition duration-300">Home</a>
-                    <a href="#projects" class="text-slate-400 hover:text-white transition duration-300">Projects</a>
-                    <a href="#skills" class="text-slate-400 hover:text-white transition duration-300">Skills</a>
-                    <a href="#about" class="text-slate-400 hover:text-white transition duration-300">About</a>
-                    <a href="#contact" class="text-slate-400 hover:text-white transition duration-300">Contact</a>
+                    <a href="#home" class="text-muted hover:text-primary transition">Home</a>
+                    <a href="#projects" class="text-muted hover:text-primary transition">Projects</a>
+                    <a href="#skills" class="text-muted hover:text-primary transition">Skills</a>
+                    <a href="#contact" class="text-muted hover:text-primary transition">Contact</a>
                 </div> -->
-            </div>
-            <div class="mt-8 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
-                <p>© 2023 AnalyticsPortfolio. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
         // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
-                document.getElementById('mobile-menu').classList.add('hidden');
+        // Theme toggle
+        const themeToggleButtons = document.querySelectorAll('[id^="theme-toggle"]');
+        themeToggleButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
             });
         });
 
-        // Add shadow to navbar on scroll
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 10) {
-                nav.classList.add('shadow-lg');
-                nav.classList.remove('shadow-none');
-            } else {
-                nav.classList.remove('shadow-lg');
-            }
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Copy email function
+        function copyEmail() {
+            const email = document.getElementById('email-address').textContent;
+            navigator.clipboard.writeText(email).then(() => {
+                const buttons = document.querySelectorAll('[onclick="copyEmail()"]');
+                buttons.forEach(button => {
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = '(Copy)';
+                    }, 2000);
+                });
+            });
+        }
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+
+            // Disable button and show loading state
+            button.disabled = true;
+            button.innerHTML = '<i data-feather="loader" class="animate-spin mr-2"></i>Sending...';
+            feather.replace();
+
+            // Simulate form submission (replace with actual form submission code)
+            setTimeout(() => {
+                // Reset button
+                button.disabled = false;
+                button.textContent = originalText;
+                feather.replace();
+
+                // Show success message (replace with actual response handling)
+                alert('Message sent successfully! I will get back to you soon.');
+                this.reset();
+            }, 1500);
+        });
+
+        // Initialize Vanta.js background
+        VANTA.GLOBE({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: "#5B9BFF",
+            backgroundColor: "transparent",
+            size: 1.00
+        });
+
+        // Initialize feather icons
+        feather.replace();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
         });
     </script>
 </body>
+
 </html>
